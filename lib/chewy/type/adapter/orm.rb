@@ -121,7 +121,7 @@ module Chewy
             batch = if options[:raw_import]
               raw_default_scope_where_ids_in(ids, options[:raw_import])
             elsif options[:direct_import]
-              hash.values_at(*ids)
+              hash.values_at(*(ids.map(&:to_s)))
             else
               default_scope_where_ids_in(ids)
             end
